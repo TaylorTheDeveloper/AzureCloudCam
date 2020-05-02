@@ -18,15 +18,15 @@ You can change the file format to various other formats or enable images and res
   
 # Software Requirements
   - Raspbian Buster Lite OS [>> download](https://downloads.raspberrypi.org/raspbian_lite_latest)
-  - Motion 4.1.1
-  - crontab
+  - Motion 4.1.1 [>> check out](https://motion-project.github.io/motion_guide.html)
+  - crontab (should be installed)
   - python3 (should be installed)
   - pip3 
-  - azure blob storage python client
+  - azure blob storage python client (via pip3)
 
-All in all this project is a lot of fun, hope you enjoy building/learning about it. I decided to build this project because I've been learning more about IoT and thought this would be a fun/useful project.
+All in all this project is a lot of fun, hope you enjoy building/learning about it. I decided to build this project because I've been learning more about IoT and thought this would be a fun/useful project. I'm interested in home automation and cloud technology.
 
-This isn't a new idea- in fact there is the [MotionEyeOS](https://github.com/ccrisan/motioneyeos/wiki) project which acomplishes this very task. However it uses google drive which I didn't want to use, I persoanlly prefer Azure Strorage because I can easily manage the data or integrate it with other cloud applications. My needs for a front end are minimal and I am ok with accessing the streams via other computers on the network over HTTP in a browser. As such, each camera device is an indepenent self-sufficent node on my local network. When I plug it in- it start's recording and backing up the data to the cloud. If I decide later I want a viewer in Azure I can write one, but for now I only want 
+This mini security camera concept isn't a new idea- in fact there is the [MotionEyeOS](https://github.com/ccrisan/motioneyeos/wiki) project which acomplishes this very task. However it uses google drive which I didn't want to use, I persoanlly prefer Azure Strorage because I can easily manage the data or integrate it with other cloud applications. My needs for a front end are minimal and I am ok with accessing the streams via other computers on the network over HTTP in a browser. As such, each camera device is an indepenent self-sufficent node on my local network. When I plug it in- it start's recording and backing up the data to the cloud. If I decide later I want a viewer in Azure I can write one, but for now I only want the ability to review video on as needed basis. I'm hoping never! 
 
 ## My Requirements for this security camera
  - Wirelessly communication so it can be placed virtually anywhere
