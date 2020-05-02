@@ -23,7 +23,7 @@ You can change the file format to various other formats or enable images and res
 - Motion 4.1.1 [>> check out](https://motion-project.github.io/motion_guide.html)
 - crontab (should be installed if using raspbian)
 - python3 (should be installed if using raspbian)
-- pip3 
+- pip3 [>> check out](https://www.raspberrypi.org/documentation/linux/software/python.md)
 - azure blob storage python client (via pip3) [>> microsoft docs](https://docs.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob?view=azure-python)
 
 All in all this project is a lot of fun, hope you enjoy building/learning about it. I decided to build this project because I've been learning more about IoT and thought this would be a fun/useful project. I'm interested in home automation and cloud technology. I'm thinking of using cameras like these for other computer vision projects at home and this seemed like a great way to learn more about it.
@@ -102,4 +102,24 @@ This mini security camera concept isn't a new idea- in fact there is the [Motion
         - Make sure the daemon is marked as 'on' in this config file or it will not work! 
         - You can modify the video code, frame rate, and video resultion amongst many other parameters. 
         - You can enable image capture if you prefer that over video stream. 
-        
+    - This is the bear minimum needed to set up the camera and view it from anoother device! Next we will push this data to the cloud. 
+
+# Backup captures to Azure Blob Storage
+
+1. Ensure you have a free Azure Subscription and Azure Storage Account
+1. Install pip3 
+    - sudo apt install python3-pip
+2. Install Azure Blob Service Client
+    - pip3 install azure-storage blob
+3. Recommend at this point doing everything as root. Makes crontab setup easier. 
+    - run sudo -i to enter root
+    - run cd ~ to go to root home directory
+    - copy pushStream.py from this repo to your root home directory (~)
+    - Update the connection string with either connection string or a Shared Access Signature to your blob account.
+    - chmod a+x ./pushstream.sh to [ensure it can execute](https://stackoverflow.com/questions/8727935/execute-python-script-via-crontab)
+    - Open cron tab with 'sudo crontab -e'
+        - manually enter cron tab enteries I have provided in crontab.txt in this repo.
+        - The first line cleans up any data that may get skipped. This should never happen- but just in case if any files are older than 1 day in this directory then they will be removed.
+        - The second line runs pushStream.py every 15 minutes and backs up data to the cloud. As data is backed up is it freed from memory on the camera. This script also automatically deletes blobs older than 2 months. You can disable this part of the code if you wish. 
+
+
