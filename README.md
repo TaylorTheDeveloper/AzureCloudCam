@@ -97,7 +97,7 @@ This mini security camera concept isn't a new idea- in fact there is the [Motion
             - For the setting 'stream_localhost' if should be set to 'on' if you only want to view the stream on the device. If you want to view the stream over http port 8081 on another machine (you can change the port if needed in the config) set this setting to 'off'
             - If 'stream_localhost' is 'off' then you need to supply credentials or you can use my defaults.
                 - 'stream_auth_method' should be '2'
-                - 'stream_authentication' should be '<your username>:<your password>'
+                - 'stream_authentication' should be '<\ your username \>:<\ your password \>'
                 - These credentials are independent of the machine credentials! 
         - Make sure the daemon is marked as 'on' in this config file or it will not work! 
         - You can modify the video code, frame rate, and video resultion amongst many other parameters. 
