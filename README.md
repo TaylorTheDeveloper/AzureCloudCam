@@ -40,7 +40,10 @@ This mini security camera concept isn't a new idea- in fact there is the [Motion
  - [TODO] Send Camera health data to another system such as IoT Hub, IoT Central, or simple alert system to let me know if a camera goes offline. Looking at healthchecks.io as a simple serivce or you can write your own.
  - [TODO] Doorbell camera has live monitor
  - Learn something new and have fun doing it 
- 
+
+# Model with N Cameras
+![model](https://homesecurityfootage.blob.core.windows.net/images-public/securitymodel.png) 
+
 # Security of system
 - Devices are not currently placed outside- or if thery are it's only the camera portion and the unit can not be accessed
 - Devices are never to be pointed inside, only to monitor vehicles and front door and exteriors
@@ -104,7 +107,7 @@ This mini security camera concept isn't a new idea- in fact there is the [Motion
         - You can enable image capture if you prefer that over video stream. 
     - This is the bear minimum needed to set up the camera and view it from anoother device! Next we will push this data to the cloud. 
 
-# Backup captures to Azure Blob Storage
+### Backup captures to Azure Blob Storage
 
 1. Ensure you have a free Azure Subscription and Azure Storage Account
 1. Install pip3 
