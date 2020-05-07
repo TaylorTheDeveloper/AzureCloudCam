@@ -122,7 +122,7 @@ This mini security camera concept isn't a new idea- in fact there is the [Motion
     - sudo apt install python3-pip
 2. Recommend at this point doing everything as root. Install Azure Blob Service Client
     - run sudo -i to enter root
-    - pip3 install azure-storage blob
+    - pip3 install azure-storage-blob
 3. Set up pushStream.py and crontab. 
     - run cd ~ to go to root home directory
     - copy pushStream.py from this repo to your root home directory (~)
