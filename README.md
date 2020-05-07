@@ -97,6 +97,7 @@ This mini security camera concept isn't a new idea- in fact there is the [Motion
     - Run: passwd and update password
 3. Download and install motion
     - Run: sudo apt-get install motion 
+    - reboot after installation
 5. Configure Motion
     - You also need to enable the motion daemon so that motion will always run.
         - open /etc/default/motion
@@ -119,10 +120,10 @@ This mini security camera concept isn't a new idea- in fact there is the [Motion
 1. Ensure you have a free Azure Subscription and Azure Storage Account
 1. Install pip3 
     - sudo apt install python3-pip
-2. Install Azure Blob Service Client
-    - pip3 install azure-storage blob
-3. Recommend at this point doing everything as root. Makes crontab setup easier. 
+2. Recommend at this point doing everything as root. Install Azure Blob Service Client
     - run sudo -i to enter root
+    - pip3 install azure-storage blob
+3. Set up pushStream.py and crontab. 
     - run cd ~ to go to root home directory
     - copy pushStream.py from this repo to your root home directory (~)
     - Update the connection string with either connection string or a Shared Access Signature to your blob account.
