@@ -114,6 +114,11 @@ This mini security camera concept isn't a new idea- in fact there is the [Motion
         - You can modify the video code, frame rate, and video resultion amongst many other parameters. 
         - You can enable image capture if you prefer that over video stream. 
     - This is the bear minimum needed to set up the camera and view it from anoother device! Next we will push this data to the cloud. 
+    Ensure permissions are set as follows so the program can start:
+sudo chmod 664 /etc/motion/motion.conf
+sudo chmod 755 /usr/bin/motion
+sudo touch /tmp/motion.log
+sudo chmod 775 /tmp/motion.log  
 
 ### Backup captures to Azure Blob Storage
 
