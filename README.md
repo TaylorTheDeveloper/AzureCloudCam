@@ -224,6 +224,11 @@ For the doorbell camera, we will use the same setup as above but with some light
 
 There you go! You've now extended your cloud security camera to also be a doorbell camera. The data will still push to the cloud. I recommend giving each camera a unique name in pushStream.py.
 
+### Review footage in Azure Storage Explorer
+
+![model](https://homesecurityfootage.blob.core.windows.net/images-public/cam1.PNG) 
+![model](https://homesecurityfootage.blob.core.windows.net/images-public/cam2.PNG) 
+
 
 
 
