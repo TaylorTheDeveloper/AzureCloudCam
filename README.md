@@ -86,6 +86,13 @@ This mini security camera concept isn't a new idea- in fact there is the [Motion
     - Choose Yes
     - Select Ok
     - Choose Finish
+3. (Optional only if using raspberry pi camera, usb cameras can skip this step) Enable Raspberry Pi camera
+    - Run: sudo raspi-config
+    - Select Interfacing options
+    - Navigate to camera
+    - Enable
+    - Finish
+    - Reboot
 3. Important! Update your password to something secure! You can skip this step if you don't care about security. 
     - Run: passwd and update password
 3. Download and install motion
