@@ -155,42 +155,71 @@ For the doorbell camera, we will use the same setup as above but with some light
 1. Set up GUI environment [> more details](https://raspberrytips.com/upgrade-raspbian-lite-to-desktop/)
 
     sudo apt update
+    
     sudo apt upgrade
+    
     sudo apt dist-upgrade
+    
     sudo reboot
+    
     sudo apt install xserver-xorg
+    
     sudo apt install raspberrypi-ui-mods // this instals PIXELS, you can isntall another GUI if you want.
+    
     sudo apt install lightdm // this might already be installed. Run anyways to check
+    
     sudo reboot
+    
 
 3. Install your TFT screen on GPIO[skip if using HDMI]
     Refer to your instructions on how to do this! For the unit I purchased, my drivers were located https://github.com/goodtft/LCD-show
+    
     I installed the MHS35B-show driver because I am using a raspberry pi B +
+    
     Note -> I had to disable/enable my camera after I did this. If your camera stops working after this install disable and renable in raspi-config. Reboot the machine. 
+    
   
 2. Set up chrome to run in fullscreen on startup [> more details](https://raspberrypi.stackexchange.com/questions/69204/open-chromium-full-screen-on-start-up)
     sudo apt install chromium-browser
     
     Then, check if this file exists. If not, create the file. Then edit the file.
+    
     sudo nano /home/pi/.config/lxsession/LXDE-pi/autostart
     
-    Add the follow items to run chrome on startup and navigate to our localhost view. This will also start it fullscreen mode. 
+    
+    Add the follow items to run chrome on startup and navigate to our localhost view. This will also start it fullscreen mode.
+    
     @xset s off
+    
     @xset -dpms
+    
     @xset s noblank
+    
+    
     @chromium-browser --kiosk http://localhost:8081
     
+    
 3. Set up autologin so we login to GUI on startup [> more details](https://www.raspberrypi.org/forums/viewtopic.php?t=164906)
+
     sudo nano /etc/lightdm/lightdm.conf
+    
     update the below line:
+    
     #autologin-user=
+    
     to be (you can use your username if different)
+    
     autologin-user=pi
+    
 
 4.  Modify /etc/motion/motion.conf to enable local viewing of doorbell camera from tft screen.
+
     set stream_localhost=on
+    
     set stream_auth_method 0
+    
     comment ;stream_authentication pi:raspberry
+    
 
 
 There you go! You've now extended your cloud security camera to also be a doorbell camera. The data will still push to the cloud. I recommend giving each camera a unique name in pushStream.py.
