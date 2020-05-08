@@ -194,10 +194,29 @@ For the doorbell camera, we will use the same setup as above but with some light
     @xset -dpms
     
     @xset s noblank
+        
+    @chromium-browser --kiosk -app=http://localhost:8081 --check-for-update-interval=31536000
     
+    The last line starts our 'app' aka our stream in kiosk mode- so the rest of the gui is disabled. There is currently a bug in chromium where the update pop up comes up to frequently, so I also pass a flag to check for an update a year after boot time. 
     
-    @chromium-browser --kiosk http://localhost:8081
+    More info:
+    https://raspberrypi.stackexchange.com/questions/68734/how-do-i-disable-restore-pages-chromium-didnt-shut-down-correctly-prompt
+    https://www.raspberrypi.org/forums/viewtopic.php?t=265626
     
+3. Hide the mouse curor in kiosk mode
+
+    sudo apt-get install unclutter
+    
+    sudo nano ~/.config/lxsession/LXDE-pi/autostart
+    
+    Add this line to autostart: 
+    
+    @unclutter -idle 0
+    
+    sudo reboot
+
+    More info:
+    https://jackbarber.co.uk/blog/2017-02-16-hide-raspberry-pi-mouse-cursor-in-raspbian-kiosk
     
 3. Set up autologin so we login to GUI on startup [> more details](https://www.raspberrypi.org/forums/viewtopic.php?t=164906)
 
