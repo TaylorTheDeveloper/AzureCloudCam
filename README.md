@@ -1,8 +1,8 @@
 # Simple DIY Azure Cloud Wireless Security IoT Camera
 
-Instructions to build a simple, light weight IoT cloud camera. Each camera connects to your network wirelessley and effortlessly. You can use virtually any usb camera or rasberry pi camera. This specific application is for a security camera but you can tweak and modify as needed for other cloud camera applications. Data is backed up to azure blob storage in every 15 minutes- but you can tune this to your needs. These cameras are lightweight and cheap! Please git (ha) in touch with me on youtube! [Taylor Teaches Youtube](https://www.youtube.com/channel/UCp8czcysNQHKMI3rHCcCGBQ)
+Instructions to build a simple, light weight IoT cloud camera. *new* Instructions for doorbell camera as well. Each camera connects to your network wirelessley and effortlessly. You can use virtually any usb camera or rasberry pi camera. This specific application is for a security camera but you can tweak and modify as needed for other cloud camera applications. Data is backed up to azure blob storage in every 15 minutes- but you can tune this to your needs. These cameras are lightweight and cheap! Please git (ha) in touch with me on youtube! [Taylor Teaches Youtube](https://www.youtube.com/channel/UCp8czcysNQHKMI3rHCcCGBQ)
 
-Although I use raspberry pi- you should be able to do this with any linux based system. These instructions will work for both the raspberry pi and the raspberry pi zero, but your milage may vary on the pi zero depending on configuration.
+Although I use raspberry pi- you should be able to do this with any linux based system. These instructions will work for both the raspberry pi and the raspberry pi zero, but your milage may vary on the pi zero depending on configuration. 
 
 You can change the file format to various other formats or enable images and resolution. See my [video]() or check out the [motion docs](https://motion-project.github.io/motion_guide.html). 
 
