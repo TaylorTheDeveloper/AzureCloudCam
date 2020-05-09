@@ -187,7 +187,7 @@ For the doorbell camera, we will use the same setup as above but with some light
     sudo nano /home/pi/.config/lxsession/LXDE-pi/autostart
     
     
-    Add the follow items to run chrome on startup and navigate to our localhost view. This will also start it fullscreen mode.
+    Add the follow items to run chrome on startup and navigate to our localhost view. This will also start it fullscreen mode. You can optionally skip the localhost configuration and have this point to the stream server url you configured before instead of localhost.
     
     @xset s off
     
@@ -202,6 +202,20 @@ For the doorbell camera, we will use the same setup as above but with some light
     More info:
     https://raspberrypi.stackexchange.com/questions/68734/how-do-i-disable-restore-pages-chromium-didnt-shut-down-correctly-prompt
     https://www.raspberrypi.org/forums/viewtopic.php?t=265626
+    
+    Some users may want to refresh chromium for various reasons. This can be done by installing xdotool and adding a simple script to trigger a refresh. Because we are in kiosk mode, the browser is in keyboard focus context.
+    
+    sudo apt-get install xdotool
+    
+    Then add the script "refreshChromium.sh" from this repo to your root user directory. Make it executable.
+    
+    sudo chmod a+x refreshChromium.sh 
+    
+    Then add the following line to your autostart script.
+    
+    @/home/pi/refreshChromium.sh
+    
+    sudo reboot    
     
 3. Hide the mouse curor in kiosk mode
 
