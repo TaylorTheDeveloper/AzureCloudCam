@@ -64,13 +64,7 @@ This mini security camera concept isn't a new idea- in fact there is the [Motion
 3. Sign in with the default username and password: 
     -username: pi 
     -password: raspberry
-3. Update software on device by entering the following commands in order:
-    - sudo apt-get update
-    - sudo apt-get upgrade
-4. Update the hostname of the device so we can find it later without the IP:
-    - [How to update hostname](https://www.cyberciti.biz/faq/ubuntu-change-hostname-command/)
-    - You should just need to update /etc/hostname and /etc/hosts with your custom name.
-5. Enable Wifi on the Pi! Wifi allows us to connect to the device over the wireless network instead of a hard line.
+3. Enable Wifi on the Pi! Wifi allows us to connect to the device over the wireless network instead of a hard line.
     - [How to enable WiFi](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md)
     - Run: sudo raspi-config
     - Select Network Options 
@@ -93,6 +87,12 @@ This mini security camera concept isn't a new idea- in fact there is the [Motion
     - Enable
     - Finish
     - Reboot
+3. Update software on device by entering the following commands in order:
+    - sudo apt-get update
+    - sudo apt-get upgrade
+4. Update the hostname of the device so we can find it later without the IP:
+    - [How to update hostname](https://www.cyberciti.biz/faq/ubuntu-change-hostname-command/)
+    - You should just need to update /etc/hostname and /etc/hosts with your custom name.
 3. Important! Update your password to something secure! You can skip this step if you don't care about security. 
     - Run: passwd and update password
 3. Download and install motion
