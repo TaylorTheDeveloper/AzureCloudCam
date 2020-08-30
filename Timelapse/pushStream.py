@@ -17,16 +17,16 @@ try:
 	print("Initate backup script")
 
 	# Connection string for azure storage
-	connect_str = "udpateme"
+	connect_str = "<updateazkey>"
+
+	# Camera name
+	cameraname = "<updatehostname>"
 
 	# root of storage container
 	container = "timelapse-"
 
 	# Local Path for blobs to upload
 	uploadsrcpath = "./capture/"
-
-	# Camera name
-	cameraname = "timelapse1"
 
 	# Create the BlobServiceClient object
 	blob_service_client = BlobServiceClient.from_connection_string(connect_str)
