@@ -1,14 +1,14 @@
 #! /bin/bash
 
 # Make sure you update the hostname and wifi settings to your needs.
-$hostname = "<updatehostname>"
-$hostnameMatch = "<updatehostname>"
-$azureConnectionString = "<updateazkey>"
-$keyMatch = "<updateazkey>"
+hostname="<updatehostname>"
+hostnameMatch="<updatehostname>"
+azureConnectionString="<updateazkey>"
+keyMatch="<updateazkey>"
 
 echo "Installing software prerequisites"
 sudo apt-get update
-sudo apt install python3-pip
+sudo apt install -y python3-pip
 pip3 install azure-storage-blob
 
 echo "Updating azure connection string"

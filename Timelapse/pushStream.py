@@ -47,7 +47,7 @@ try:
 	now = datetime.datetime.utcnow()
 	#midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
 	#seconds = (now-midnight).seconds
-	cmd = f'raspistill -o ./capture/{now:%Y-%B-%d}-{now.timestamp()}.jpg'
+	cmd = f'raspistill -o ./capture/{now:%Y-%B-%d}-{now.timestamp()}.jpg -q 100 -t 1'
 	print(cmd)
 	os.system(cmd)
 	print("picture captured")
@@ -116,16 +116,11 @@ try:
 		blob_client = blob_service_client.get_blob_client(container=container_name, blob=cameraname + "/" +fname)
 
 		# Upload the created file if it doesn't already exist
-		print("a0")
 		# Delete on successful upload
 		with open(join(uploadsrcpath,fname), "rb") as data:
-			print("a1")
 			try:
-				print("a2")
 				blob_client.upload_blob(data)
-				print("a3")
 				os.remove(join(uploadsrcpath,fname))
-				print("a4")
 			except Exception as nex:
 				print("Exception:")
 				print(nex)
