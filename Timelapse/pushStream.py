@@ -1,5 +1,8 @@
-
 #!/usr/bin/python3
+
+# Crontab to take a picture every minute
+# * * * * * /usr/bin/python3 /home/pi/AzureCloudCam/Timelapse/pushStream.py > out.log
+#
 
 # Backups video footage to the cloud
 from os import listdir
@@ -14,10 +17,10 @@ try:
 	print("Initate backup script")
 
 	# Connection string for azure storage
-	connect_str = "<replace me>"
+	connect_str = "udpateme"
 
 	# root of storage container
-	container = "securityfoot-"
+	container = "timelapse-"
 
 	# Local Path for blobs to upload
 	uploadsrcpath = "./capture/"
@@ -88,7 +91,7 @@ try:
 	# Check if container exists
 	# this will thow an exception if the container doesnt exist
 	# We will create the container in the exception block
-	print(container_client.get_container_properties())
+	container_client.get_container_properties()
 
 except Exception as ex:
 	print('Exception:')
@@ -96,11 +99,11 @@ except Exception as ex:
 	print('...')
 	print('Creating new container...')
 	container_client = blob_service_client.create_container(container_name)
-	print('Container created: ' + container_name)
+	print('Container created: ' + container_name + '\n')
 
 
 try:
-	print("Pushing data to secure cloud storage: " + container_name + "/" + cameraname)
+	print("Pushing data to secure cloud storage: " + container_name + "/" + cameraname + '\n')
 
 	# Get all files in local path
 	onlyfiles = [f for f in listdir(uploadsrcpath) if isfile(join(uploadsrcpath, f))]
@@ -113,11 +116,16 @@ try:
 		blob_client = blob_service_client.get_blob_client(container=container_name, blob=cameraname + "/" +fname)
 
 		# Upload the created file if it doesn't already exist
+		print("a0")
 		# Delete on successful upload
 		with open(join(uploadsrcpath,fname), "rb") as data:
+			print("a1")
 			try:
+				print("a2")
 				blob_client.upload_blob(data)
+				print("a3")
 				os.remove(join(uploadsrcpath,fname))
+				print("a4")
 			except Exception as nex:
 				print("Exception:")
 				print(nex)
