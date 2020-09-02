@@ -14,14 +14,15 @@ try:
 	# Connection string for azure storage
 	connect_str = "<replace with your azure storage connection string>"
 
+	# Camera name
+	cameraname = "picam1"
+
 	# root of storage container
-	container = "securityfoot-"
+	rootStorageContainerName - "securityfoot"
+	container = rootStorageContainerName + "-"
 
 	# Local Path for blobs to upload
 	uploadsrcpath = "/var/lib/motion/"
-
-	# Camera name
-	cameraname = "picam1"
 
 	# Create the BlobServiceClient object
 	blob_service_client = BlobServiceClient.from_connection_string(connect_str)
@@ -29,25 +30,6 @@ try:
 except Exception as ex:
 	print("Failed to initate script")
 	print(ex)
-
-
-try:
-	print("Clean up old containers")
-	time = datetime.datetime.now()
-	# Chose to hard code this but this could also be an environment variable
-	monthsback = -2
-	timeback = datetime.date(time.year, time.month + monthsback, time.day)
-	oldmonth = timeback.strftime("%B")
-	oldcontainer_name = (container + oldmonth).lower()
-	print("Attempt to delete " + oldcontainer_name + " if exists")
-
-	# Create the container
-	blob_service_client.delete_container(oldcontainer_name)
-
-except Exception as ex:
-	print("Ran into an issue cleaning up old blob containers")
-	print(ex)
-
 
 try:
 	print("Getting latest container...")

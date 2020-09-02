@@ -64,7 +64,10 @@ This mini security camera concept isn't a new idea- in fact there is the [Motion
 3. Sign in with the default username and password: 
     -username: pi 
     -password: raspberry
-3. Enable Wifi on the Pi! Wifi allows us to connect to the device over the wireless network instead of a hard line.
+3. Update the hostname of the device so we can find it later without the IP:
+    - [How to update hostname](https://www.cyberciti.biz/faq/ubuntu-change-hostname-command/)
+    - You should just need to update /etc/hostname and /etc/hosts with your custom name.
+5. Enable Wifi on the Pi! Wifi allows us to connect to the device over the wireless network instead of a hard line.
     - [How to enable WiFi](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md)
     - Run: sudo raspi-config
     - Select Network Options 
@@ -87,16 +90,13 @@ This mini security camera concept isn't a new idea- in fact there is the [Motion
     - Enable
     - Finish
     - Reboot
+3. Important! Update your password to something secure! You can skip this step if you don't care about security. 
+    - Run: passwd and update password
 3. Update software on device by entering the following commands in order:
     - sudo apt-get update
     - sudo apt-get upgrade
-4. Update the hostname of the device so we can find it later without the IP:
-    - [How to update hostname](https://www.cyberciti.biz/faq/ubuntu-change-hostname-command/)
-    - You should just need to update /etc/hostname and /etc/hosts with your custom name.
-3. Important! Update your password to something secure! You can skip this step if you don't care about security. 
-    - Run: passwd and update password
-3. Download and install motion
-    - Run: sudo apt-get install motion 
+3. Download and install motion, git, and pip3 (you'll)
+    - Run: sudo apt-get install -y motion git python3-pip
     - reboot after installation
 5. Configure Motion
     - You also need to enable the motion daemon so that motion will always run.
@@ -114,38 +114,24 @@ This mini security camera concept isn't a new idea- in fact there is the [Motion
         - You can modify the video code, frame rate, and video resultion amongst many other parameters. 
         - You can enable image capture if you prefer that over video stream. 
     - This is the bear minimum needed to set up the camera and view it from anoother device! Next we will push this data to the cloud. 
-    Ensure permissions are set as follows so the program can start:
-    
-sudo chmod 664 /etc/motion/motion.conf
 
-sudo chmod 755 /usr/bin/motion
+### Optionally backup captures to Azure Blob Storage
 
-sudo touch /tmp/motion.log
-
-sudo chmod 775 /tmp/motion.log  
-
-
-### Backup captures to Azure Blob Storage
-
-1. Ensure you have a free Azure Subscription and Azure Storage Account
-1. Install pip3 
-    - sudo apt install python3-pip
-2. Recommend at this point doing everything as root. Install Azure Blob Service Client
+1. Clone this repo to your machines home directory
+1. Ensure you have a free [Azure Subscription and Azure Storage Account](https://portal.azure.com)
+1. Install git and pip3 if you haven't already
+    - sudo apt install -y python3-pip
+2. From this point, you need to install the azure-storage-blob library and crontab configuration as root. Otherwise the script will not be able to delete files from /var/lib/motion after upload.
     - run sudo -i to enter root
     - pip3 install azure-storage-blob
 3. Set up pushStream.py and crontab. 
-    - run cd ~ to go to root home directory
-    - copy pushStream.py from this repo to your root home directory (~)
     - Update the connection string with either connection string or a Shared Access Signature to your blob account.
-    - Update the camera name to be whatever you want it to be. Leave this alone if you like my default name.
-    - chmod a+x ./pushstream.sh to [ensure it can execute](https://stackoverflow.com/questions/8727935/execute-python-script-via-crontab)
+    - Update the camera name to be whatever you want it to be. Leave this alone if you like my default name. ;)
     - Open cron tab with 'sudo crontab -e'
         - manually enter cron tab enteries I have provided in crontab.txt in this repo.
-        - The first line cleans up any data that may get skipped. This should never happen- but just in case if any files are older than 1 day in this directory then they will be removed.
-        - The second line runs pushStream.py every 15 minutes and backs up data to the cloud. As data is backed up is it freed from memory on the camera. This script also automatically deletes blobs older than 2 months. You can disable this part of the code if you wish. 
-        
-        
-### Additonal Steps to enable doorbell camera!
+    - Your python script should now upload any files from motion to your cloud storage account
+
+### Optional Additonal Steps to enable doorbell camera!
 
 Recommend you grab yourself a 3.5" TFT screen and case like this one:
 
