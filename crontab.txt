@@ -22,9 +22,5 @@
 # 
 # m h  dom mon dow   command
 
-# Clean up files older than 24 hours once a day. 
-# This is intended as a backup so the device does not run out of memory.
-0 0 * * * find /var/lib/motion/* -mtime +0 -type f -delete 
-
-# Every 15 minutes push data. This script deletes data as it is pushed to blob storage.
-*/15 * * * * ~/pushStream.py > log.txt
+# Every 5 minutes push data. This script deletes data as it is pushed to blob storage.
+*/5 * * * * /usr/bin/python3 /home/pi/AzureCloudCam/pushStream.py > log.txt
