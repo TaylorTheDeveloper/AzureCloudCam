@@ -18,7 +18,7 @@ try:
 	cameraname = "picam1"
 
 	# root of storage container
-	rootStorageContainerName - "securityfoot"
+	rootStorageContainerName = "securityfoot"
 	container = rootStorageContainerName + "-"
 
 	# Local Path for blobs to upload
